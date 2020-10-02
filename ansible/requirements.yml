@@ -1,0 +1,3 @@
+- src: kurron.aws
+- src: kurron.docker-host
+- src: kurron.hashicorp

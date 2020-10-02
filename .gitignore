@@ -1,0 +1,9 @@
+vagrant-bare
+packer_cache
+output-virtualbox-iso
+vagrant
+.vagrant
+*.ova
+*.ovf
+*.vmx
+packer-log.txt
