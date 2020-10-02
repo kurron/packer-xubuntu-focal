@@ -1,5 +1,5 @@
 # Overview
-This project creates an Xubuntu 18.04 box with software development tools installed.
+This project creates an Xubuntu 20.04 box with software development tools installed.
 
 # Prerequisites
 * a working [Packer](https://www.packer.io/) installation

@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 2.1.1"
+Vagrant.require_version ">= 2.2.10"
 
 Vagrant.configure(2) do |config|
-    config.vm.box = "kurron/bionic-xubuntu"
+    config.vm.box = "kurron/focal-xubuntu"
     config.vm.boot_timeout = 300
     config.vm.box_check_update = true
     config.vm.graceful_halt_timeout = 60
@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
     config.ssh.password = "vagrant"
 
     config.vm.provider "virtualbox" do |virtualbox|
-        virtualbox.name = "bionic-xubuntu-packer-test"
+        virtualbox.name = "focal-xubuntu-packer-test"
         virtualbox.gui = true
         virtualbox.memory = 4096
         virtualbox.cpus = 2
@@ -36,12 +36,5 @@ Vagrant.configure(2) do |config|
         virtualbox.customize ["modifyvm", :id, "--vtxvpid", "on"]
         virtualbox.customize ["modifyvm", :id, "--largepages", "on"]
         virtualbox.customize ["modifyvm", :id, "--acpi", "on"]
-    end
-
-    config.vm.provider "vmware_desktop" do |vmware|
-        vmware.name = "bionic-xubuntu-packer-test"
-        vmware.gui = true
-        vmware.memory = 4096
-        vmware.cpus = 2
     end
 end
