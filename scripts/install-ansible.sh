@@ -8,25 +8,16 @@ function wait_for_apt_lock() {
 echo "Installing Ansible via package manager..."
 
 # maybe this will help avoid the APT lock issues?
-sudo systemctl stop apt-daily.timer
+#sudo systemctl stop apt-daily.timer
 
 # I've had issues with something grabbing the APT lock so we check at each step now
-sleep 5m
+echo Wait for APT lock
+#sleep 5m
 
+echo Adding Ansible Package
 wait_for_apt_lock
 sudo apt-get update
 wait_for_apt_lock
-sudo apt-get --yes install software-properties-common
-
-echo Adding Ansible PPA
-wait_for_apt_lock
-sudo apt-add-repository ppa:ansible/ansible
-
-echo "Who owns the lock?"
-sudo lsof /var/lib/dpkg/lock
-wait_for_apt_lock
-sudo apt-get update
-wait_for_apt_lock
-sudo apt-get --yes install ansible
+sudo apt-get --yes install software-properties-common ansible
 
 ansible --version

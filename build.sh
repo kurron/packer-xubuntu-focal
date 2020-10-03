@@ -24,7 +24,7 @@ echo ${VALIDATE}
 ${VALIDATE} || error_exit "Unable to validate Packer file."
 
 # build all platforms
-BUILD="packer build --parallel=false --force ${PACKER_FILE}"
+BUILD="packer build --force ${PACKER_FILE}"
 echo ${BUILD}
 ${BUILD} || error_exit "Unable to execute build."
 

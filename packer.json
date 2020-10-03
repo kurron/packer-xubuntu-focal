@@ -1,13 +1,12 @@
 {
-    "description": "Builds a Xubuntu 18.04 desktop box with various software development tools installed",
-    "min_packer_version": "1.5.4",
+    "description": "Builds a Xubuntu 20.04 desktop box with various software development tools installed",
+    "min_packer_version": "1.6.4",
 
     "variables": {
         "ssh_name"            : "vagrant",
         "ssh_pass"            : "vagrant",
-        "virtualbox_appliance": "bionic-beaver.ova",
-        "vmware_appliance"    : "bionic-beaver.vmx",
-        "comment"             : "Ubuntu 18.04 Bionic Beaver with VirtualBox and VMWare support.  See [README](https://github.com/kurron/jvm-development-environment) for launch instructions.",
+        "virtualbox_appliance": "focal-fosa.ova",
+        "comment"             : "Ubuntu 20.04 Focal Fossa with VirtualBox support.  See [README](https://github.com/kurron/jvm-development-environment) for launch instructions.",
         "cloud_user"          : "{{env `VAGRANT_CLOUD_ACCOUNT`}}",
         "cloud_token"         : "{{env `VAGRANT_CLOUD_TOKEN`}}"
     },
@@ -32,22 +31,7 @@
             ["modifyvm", "{{.Name}}", "--memory", "2048"],
             ["modifyvm", "{{.Name}}", "--cpus", "1"]
         ],
-        "vm_name"              : "packer-bionic-xubuntu"
-    },
-    {
-        "type"                 : "vmware-vmx",
-        "source_path"          : "{{user `vmware_appliance`}}",
-        "ssh_username"         : "{{user `ssh_name`}}",
-        "ssh_password"         : "{{user `ssh_pass`}}",
-        "boot_wait"            : "30s",
-        "disable_vnc"          : true,
-        "headless"             : false,
-        "output_directory"     : "output-vmware-vmx",
-        "shutdown_command"     : "sudo shutdown --poweroff now",
-        "shutdown_timeout"     : "2m",
-        "skip_compaction"      : false,
-        "tools_upload_flavor"  : "linux",
-        "vm_name"              : "packer-bionic-xubuntu"
+        "vm_name"              : "packer-focal-xubuntu"
     }
     ],
     "provisioners": [        
@@ -63,6 +47,11 @@
             "extra_arguments" : ["--verbose"]
         },
         {
+            "type": "file",
+            "source": "bash_aliases",
+            "destination": "/home/vagrant/.bash_aliases"
+        },
+        {
             "type"            : "shell",
             "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
             "scripts"         : ["scripts/install-hypervisor-tools.sh","scripts/prepare-for-compression.sh"]
@@ -73,7 +62,7 @@
             {
                 "compression_level"  : 9,
                 "keep_input_artifact": false,
-                "output"             : "vagrant/xubuntu-bionic-{{.Provider}}.box",
+                "output"             : "vagrant/xubuntu-focal-{{.Provider}}.box",
                 "type"               : "vagrant"
             }
         ]
