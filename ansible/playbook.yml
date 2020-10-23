@@ -104,7 +104,7 @@
             - { name: 'install-eclipse.sh', command: 'sudo snap install eclipse --classic' }
             - { name: 'install-postman.sh', command: 'sudo snap install postman' }
             - { name: 'install-kubectl.sh', command: 'sudo snap install kubectl --classic' }
-            - { name: 'install-docker.sh', command: 'sudo groupadd docker && sudo usermod -aG docker $USER && sudo snap install docker --channel=latest/stable && chown root:docker /var/run/docker.sock && echo Log out to have group permissins activate' }
+            - { name: 'install-docker.sh', command: 'sudo groupadd docker && sudo usermod -aG docker $USER && sudo snap install docker --channel=latest/stable && sudo chown root:docker /var/run/docker.sock && echo "Log out to have group permissins activate"' }
             - { name: 'install-kubernetes.sh', command: 'sudo snap install microk8s --classic && sudo usermod -a -G microk8s $USER && sudo chown -f -R $USER ~/.kube' }
             - { name: 'install-powershell.sh', command: 'sudo snap install powershell --classic' }
             - { name: 'install-ffmpeg.sh', command: 'sudo snap install ffmpeg' }
