@@ -1,14 +1,12 @@
 {
     "description": "Builds a Xubuntu 20.04 desktop box with various software development tools installed",
-    "min_packer_version": "1.6.4",
+    "min_packer_version": "1.7.2",
 
     "variables": {
         "ssh_name"            : "vagrant",
         "ssh_pass"            : "vagrant",
         "virtualbox_appliance": "focal-fosa.ova",
-        "comment"             : "Ubuntu 20.04 Focal Fossa with VirtualBox support.  See [README](https://github.com/kurron/jvm-development-environment) for launch instructions.",
-        "cloud_user"          : "{{env `VAGRANT_CLOUD_ACCOUNT`}}",
-        "cloud_token"         : "{{env `VAGRANT_CLOUD_TOKEN`}}"
+        "comment"             : "Ubuntu 20.04 Focal Fossa with VirtualBox support.  See [README](https://github.com/kurron/jvm-development-environment) for launch instructions."
     },
 
     "builders": [{
