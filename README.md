@@ -11,7 +11,7 @@ This project creates an Xubuntu 20.04 box with software development tools instal
 Type `./build.sh` to build the server box.
 
 # Installation
-The scripts will automatically install the newly built box into Vagrant's cache. Publish it to Hashicorp's Cloud Platform must be done manually.
+The scripts will automatically install the newly built box into Vagrant's cache. Publication to [Hashicorp's Cloud Platform](https://app.vagrantup.com/) must be done manually.
 
 # Tips and Tricks
 
