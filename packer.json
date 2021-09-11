@@ -1,6 +1,6 @@
 {
     "description": "Builds a Xubuntu 20.04 desktop box with various software development tools installed",
-    "min_packer_version": "1.7.2",
+    "min_packer_version": "1.7.4",
 
     "variables": {
         "ssh_name"            : "vagrant",

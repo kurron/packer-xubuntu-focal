@@ -104,7 +104,7 @@
             - { name: 'install-eclipse.sh', command: 'sudo snap install eclipse --classic' }
             - { name: 'install-postman.sh', command: 'sudo snap install postman' }
             - { name: 'install-kubectl.sh', command: 'sudo snap install kubectl --classic' }
-            - { name: 'install-docker.sh', command: 'sudo groupadd docker && sudo usermod -aG docker $USER && sudo snap install docker --channel=latest/stable && sleep 15s &&  sudo chown root:docker /var/run/docker.sock && echo "Log out to have group permissins activate"' }
+#           - { name: 'install-docker.sh', command: 'sudo groupadd docker && sudo usermod -aG docker $USER && sudo snap install docker --channel=latest/stable && sleep 15s &&  sudo chown root:docker /var/run/docker.sock && echo "Log out to have group permissins activate"' }
             - { name: 'install-kubernetes.sh', command: 'sudo snap install microk8s --classic && sudo usermod -a -G microk8s $USER && sudo chown -f -R $USER ~/.kube' }
             - { name: 'install-powershell.sh', command: 'sudo snap install powershell --classic' }
             - { name: 'install-ffmpeg.sh', command: 'sudo snap install ffmpeg' }
@@ -117,6 +117,6 @@
             - { name: 'install-visual-vm.sh', command: 'source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install visualvm' }
 
   roles:
-      - { role: kurron.docker-host, docker_engine_install: false, docker_machine_install: false }
-      - kurron.hashicorp
+      - { role: kurron.docker-host, docker_engine_install: true, docker_compose_install: true, docker_machine_install: false }
+#     - kurron.hashicorp
 
