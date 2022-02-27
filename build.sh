@@ -28,7 +28,6 @@ BUILD="packer build --force ${PACKER_FILE}"
 echo ${BUILD}
 ${BUILD} || error_exit "Unable to execute build."
 
-vagrant box add --clean --force --name focal-xubuntu --provider virtualbox vagrant/xubuntu-focal-virtualbox.box || error_exit "Unable to add VirtualBox box."
+vagrant box add --clean --force --name focal-xubuntu --provider hyperv vagrant/xubuntu-focal-hyperv.box || error_exit "Unable to add Hyper-V box."
 
-vagrant box list || error_exit "Unable to list Vagrant boxes."
-ls -alh vagrant || error_exit "Unable to list newly built files."
+vagrant box list || error_exit "Unable to list Vagrant boxes." || error_exit "Unable to list newly built files."
