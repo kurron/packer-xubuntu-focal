@@ -1,18 +1,24 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 2.2.15"
+Vagrant.require_version ">= 2.2.19"
 
 Vagrant.configure(2) do |config|
   config.vm.box = "focal-xubuntu"
   config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
 
-  config.vm.provider "virtualbox" do |virtualbox|
-#     virtualbox.name = "focal-xubuntu-packer-test-vbox"
-      virtualbox.gui = true
-      virtualbox.memory = 4096
-      virtualbox.cpus = 2
+  config.vm.provider "hyper-v" do |hyperv|
+      hyperv.vmname = "Focal Fossa"     
+      hyperv.memory = 4096
+      hyperv.cpus = 2
+      hyperv.enable_checkpoints = false
+      hyperv.vm_integration_services = {
+        guest_service_interface: false,
+        heartbeat: true,
+        shutdown: true,
+        time_synchronization: true
+      }
   end
 
 end

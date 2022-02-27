@@ -16,17 +16,6 @@
             - "unzip"
         become: yes
 
-      - name: Install Useful Desktop Snaps
-        snap:
-            name: '{{ item.name }}'
-            classic: '{{ item.classic }}'
-            state: present
-        with_items:
-        - { name: 'code', classic: 'yes' }
-        - { name: 'firefox', classic: 'no' }
-        - { name: 'chromium', classic: 'no' }
-        become: yes
-
       - name: Download SDKMAN!
         get_url:
             url: "https://get.sdkman.io"
@@ -99,6 +88,8 @@
             - { name: 'install-rider.sh', command: 'sudo snap install rider --classic' }
             - { name: 'install-rubymine.sh', command: 'sudo snap install rubymine --classic' }
             - { name: 'install-webstorm.sh', command: 'sudo snap install webstorm --classic' }
+            - { name: 'install-dataspell.sh', command: 'sudo snap install dataspell --classic' }
+            - { name: 'install-space.sh', command: 'sudo snap install space' }
             - { name: 'install-atom.sh', command: 'sudo snap install atom --classic' }
             - { name: 'install-android-studio.sh', command: 'sudo snap install android-studio --classic' }
             - { name: 'install-eclipse.sh', command: 'sudo snap install eclipse --classic' }
